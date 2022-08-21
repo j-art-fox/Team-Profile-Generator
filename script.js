@@ -1,25 +1,14 @@
-const renderHTML = require('./utilities/renderHTML');
-// const newmember = require('./newmember.js')
+const fs = require('fs');
+const generateHTML = require('./utilities/renderHTML');
+const newmember = require('./newmember.js')
 //1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
 //2 create test for function that prompts user using inquirer to answer questionaire for assembling information about their team.
 //3 create test for a function that then takes the responses from the inquirer and then displays them in a brand new HTML document.
 //4 Use bootstrap so the html document has uniform styling.
 const inquirer = require('inquirer');
-const fs = require('fs');
 const teamInfo = [];
 const hello = "hello";
 
-function Newmember (name, position, id, office, email, github){
-    this.name = name;
-    this.position = position;
-    this.id = id;
-    this.office = office;
-    this.email = email;
-    this.github = github;
-    this.member = () => {
-        console.log([this.name])
-    }
-}
 
 const addEngineer = () => {
     inquirer
@@ -51,7 +40,7 @@ const addEngineer = () => {
             // },
         ])
         .then((data) => {
-            const engineerData = new Newmember(data.name, "Engineer", data.id, data.office, data.email, data.github)
+            const engineerData = new newmember.Newengineer(data.name, "Engineer", data.id, data.office, data.email, data.github)
             teamInfo.push(engineerData)
             //push information into the teamInfo array
             addNewOrExit()
@@ -88,7 +77,7 @@ const addIntern = () => {
             // },
         ])
         .then((data) => {
-            const internData = new Newmember(data.name, "Intern", data.id, data.office, data.email, data.github)
+            const internData = new newmember.Newintern(data.name, "Intern", data.id, data.office, data.email, data.github)
             teamInfo.push(internData)
             //push information into the teamInfo array
             addNewOrExit()
@@ -155,24 +144,24 @@ const init = () => {
         ])
 
         .then((data) => {
-            const managerData = new Newmember(data.name, "Manager", data.id, data.office, data.email, data.github)
+            const managerData = new newmember.Newmanager(data.name, "Manager", data.id, data.office, data.email, data.github)
             teamInfo.push(managerData)
             addNewOrExit()
             //push information into the teamInfo array
         })
 }
-
-function buildTeam() {
-    const collectedData = renderHTML.generateHTML(teamInfo)
-    writeToFile('output/index.html', collectedData)
-    // console.log(teamInfo);
-}
-
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
          err ? console.error(err) : console.log('Success! New html file created.')
     )
 }
+
+function buildTeam() {
+    const collectedData = generateHTML(teamInfo)
+    writeToFile('output/index.html', collectedData)
+    console.log(teamInfo);
+}
+
 
 
 init()

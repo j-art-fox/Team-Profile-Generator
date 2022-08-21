@@ -1,3 +1,4 @@
+const renderHTML = require('./utilities/renderHTML');
 // const newmember = require('./newmember.js')
 //1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
 //2 create test for function that prompts user using inquirer to answer questionaire for assembling information about their team.
@@ -6,6 +7,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const teamInfo = [];
+const hello = "hello";
 
 function Newmember (name, position, id, office, email, github){
     this.name = name;
@@ -49,8 +51,8 @@ const addEngineer = () => {
             // },
         ])
         .then((data) => {
-            const engineerData = new newmember.Newmember(data.name, "Engineer", data.id, data.office, data.email, data.github)
-            console.log(JSON.stringify(engineerData))
+            const engineerData = new Newmember(data.name, "Engineer", data.id, data.office, data.email, data.github)
+            teamInfo.push(engineerData)
             //push information into the teamInfo array
             addNewOrExit()
         })
@@ -86,8 +88,8 @@ const addIntern = () => {
             // },
         ])
         .then((data) => {
-            const internData = new newmember.Newmember(data.name, "Intern", data.id, data.office, data.email, data.github)
-            console.log(JSON.stringify(internData))
+            const internData = new Newmember(data.name, "Intern", data.id, data.office, data.email, data.github)
+            teamInfo.push(internData)
             //push information into the teamInfo array
             addNewOrExit()
         })
@@ -115,8 +117,8 @@ const addNewOrExit = () => {
                 addEngineer()
             }
             if (data.nextMember1 === "Add an intern") {
-                addIntern()
                 console.log("intern")
+                addIntern()
             }
         })
 }
@@ -153,19 +155,24 @@ const init = () => {
         ])
 
         .then((data) => {
-            const managerData = new newmember.Newmember(data.name, "Manager", data.id, data.office, data.email, data.github)
-            console.log(data)
+            const managerData = new Newmember(data.name, "Manager", data.id, data.office, data.email, data.github)
+            teamInfo.push(managerData)
             addNewOrExit()
             //push information into the teamInfo array
         })
 }
 
-const buildTeam = () => {
-    //turn the teamInfo array into  
+function buildTeam() {
+    const collectedData = renderHTML.generateHTML(teamInfo)
+    writeToFile('output/index.html', collectedData)
+    // console.log(teamInfo);
 }
 
 function writeToFile(fileName, data) {
-
+    fs.writeFile(fileName, data, (err) =>
+         err ? console.error(err) : console.log('Success! New html file created.')
+    )
 }
 
-init();
+
+init()

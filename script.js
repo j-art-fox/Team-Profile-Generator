@@ -1,13 +1,12 @@
 const fs = require('fs');
 const generateHTML = require('./utilities/renderHTML');
-const newmember = require('./newmember.js')
-//1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
-//2 create test for function that prompts user using inquirer to answer questionaire for assembling information about their team.
-//3 create test for a function that then takes the responses from the inquirer and then displays them in a brand new HTML document.
-//4 Use bootstrap so the html document has uniform styling.
+const newmember = require('./utilities/newmember.js')
 const inquirer = require('inquirer');
 const teamInfo = [];
-const hello = "hello";
+
+//TO DO LIST:
+//1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
+//4 Use bootstrap so the html document has uniform styling.
 
 
 const addEngineer = () => {

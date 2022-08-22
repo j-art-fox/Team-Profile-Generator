@@ -1,12 +1,10 @@
-const fs = require('fs');
-const generateHTML = require('./utilities/renderHTML');
-const newmember = require('./lib/Employee.js')
-const inquirer = require('inquirer');
-const teamInfo = [];
-
-//TO DO LIST:
-//Create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
-
+const fs = require('fs')
+const generateHTML = require('./utilities/renderHTML')
+const inquirer = require('inquirer')
+const teamInfo = []
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
 
 const addEngineer = () => {
@@ -24,11 +22,6 @@ const addEngineer = () => {
             },
             {
                 type: 'input',
-                message: 'Write their office number.',
-                name: 'office',
-            },
-            {
-                type: 'input',
                 message: 'Write their email.',
                 name: 'email',
             },
@@ -38,10 +31,10 @@ const addEngineer = () => {
                 name: 'github',
             },
         ])
+
         .then((data) => {
-            const engineerData = new newmember.Newmember(data.name, "Engineer", data.id, data.office, data.email, data.github)
+            const engineerData = new Engineer(data.name, data.id, data.email, data.github)
             teamInfo.push(engineerData)
-            //push information into the teamInfo array
             mainMenu()
         })
 }
@@ -61,27 +54,22 @@ const addIntern = () => {
             },
             {
                 type: 'input',
-                message: 'Write their office number.',
-                name: 'office',
-            },
-            {
-                type: 'input',
                 message: 'Write their email.',
                 name: 'email',
             },
             {
                 type: 'input',
-                message: 'Write their GitHub handle.',
-                name: 'github',
+                message: 'Write the name of their school.',
+                name: 'school',
             },
         ])
+
         .then((data) => {
-            const internData = new newmember.Newmember(data.name, "Intern", data.id, data.office, data.email, data.github)
+            const internData = new Intern(data.name, data.id, data.email, data.school)
             teamInfo.push(internData)
-            //push information into the teamInfo array
             mainMenu()
         })
-    }
+}
 
 const mainMenu = () => {
     inquirer
@@ -96,16 +84,12 @@ const mainMenu = () => {
 
         .then((data) => {
             if (data.nextMember1 === "Exit") {
-                //exit the inquirer and build the team
                 buildTeam(data);
-                console.log(data)
             }
             if (data.nextMember1 === "Add an engineer") {
-                console.log("engineer")
                 addEngineer()
             }
             if (data.nextMember1 === "Add an intern") {
-                console.log("intern")
                 addIntern()
             }
         })
@@ -133,25 +117,19 @@ const init = () => {
                 type: 'input',
                 message: 'Write their email.',
                 name: 'email',
-            },
-            {
-                type: 'input',
-                message: 'Write their GitHub handle.',
-                name: 'github',
-            },
-
+            }
         ])
 
         .then((data) => {
-            const managerData = new newmember.Newmember(data.name, "Manager", data.id, data.office, data.email, data.github)
+            const managerData = new Manager(data.name, data.id, data.office, data.email)
             teamInfo.push(managerData)
             mainMenu()
-            //push information into the teamInfo array
         })
 }
+
 function writeToFile(fileName, data) {
     fs.writeFile(fileName, data, (err) =>
-         err ? console.error(err) : console.log('Success! New html file created.')
+        err ? console.error(err) : console.log('Success! New html file created.')
     )
 }
 
@@ -160,7 +138,5 @@ function buildTeam() {
     writeToFile('output/index.html', collectedData)
     console.log(teamInfo);
 }
-
-
 
 init()

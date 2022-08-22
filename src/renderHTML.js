@@ -1,22 +1,40 @@
 const makeTeam = (team) => {
     const teamHTML = []
-    // const getEngineer = engineer => {
-    //     let engineerCard =`<div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card w-25 m-2">
-    //     <div class="card-body">
-    //         <div class="bg-info p-2 mb-3 text-white">
-    //             <h4 class="card-title">${engineer.name}</h4>
-    //             <h5>${engineer.id}</h5>
-    //         </div>
-    //         <ul style="list-style: none" class="bg-white">
-    //             <li><i class="fa-solid fa-list-check"></i> engineer</li>
-    //             <li><i class="fa-solid fa-cube"></i>:${engineer.office}</li>
-    //             <li><i class="fa-solid fa-envelope"></i>:<a href="mailto:${engineer.email}">${engineer.email}</a></li>
-    //             <li><i class="fa-brands fa-github"></i>:<a href="https://github.com/${engineer.github}/">${engineer.github}</a></li>
-    //         </ul>
-    //     </div>
-    // </div>`
-    // teamHTML.push(engineerCard)
-    // }
+   
+    const getIntern = intern => {
+        let internCard =`<div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card w-25 m-2">
+        <div class="card-body">
+            <div class="bg-info p-2 mb-3 text-white">
+                <h4 class="card-title">${intern.name}</h4>
+                <h5>${intern.id}</h5>
+            </div>
+            <ul style="list-style: none" class="bg-white">
+                <li><i class="fa-solid fa-school"></i>: Intern</li>
+                <li><i class="fa-solid fa-envelope"></i>:<a href="mailto:${intern.email}">${intern.email}</a></li>
+                <li><i class="fas fa-chalkboard-teacher"></i>:${intern.school}</li>
+            </ul>
+        </div>
+    </div>`
+    teamHTML.push(internCard)
+    }
+    
+    const getEngineer = engineer => {
+        let engineerCard =`<div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card w-25 m-2">
+        <div class="card-body">
+            <div class="bg-info p-2 mb-3 text-white">
+                <h4 class="card-title">${engineer.name}</h4>
+                <h5>${engineer.id}</h5>
+            </div>
+            <ul style="list-style: none" class="bg-white">
+                <li><i class="fa-solid fa-wrench"></i> Engineer</li>
+                <li><i class="fa-solid fa-envelope"></i>:<a href="mailto:${engineer.email}">${engineer.email}</a></li>
+                <li><i class="fa-brands fa-github"></i>:<a href="https://github.com/${engineer.userName}/">${engineer.userName}</a></li>
+            </ul>
+        </div>
+    </div>`
+    teamHTML.push(engineerCard)
+    }
+
     const getManager = manager => {
         let managerCard =`<div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);"  class="card w-25 m-2">
         <div class="card-body">
@@ -37,6 +55,12 @@ const makeTeam = (team) => {
     for (employee of team) {
         if (employee.getRole() === "Manager"){
             getManager(employee)
+        }
+        if (employee.getRole() === "Engineer"){
+            getEngineer(employee)
+        }
+        if (employee.getRole() === "Intern"){
+            getIntern(employee)
         }
     }
     return teamHTML.join('')

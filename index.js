@@ -135,7 +135,7 @@ function writeToFile(fileName, data) {
 
 function buildTeam() {
     const collectedData = generateHTML(teamInfo)
-    writeToFile('output/index.html', collectedData)
+    writeToFile('dist/index.html', collectedData)
     console.log(teamInfo);
 }
 

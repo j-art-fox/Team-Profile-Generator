@@ -5,8 +5,8 @@ const inquirer = require('inquirer');
 const teamInfo = [];
 
 //TO DO LIST:
-//1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
-//4 Use bootstrap so the html document has uniform styling.
+//Create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
+
 
 
 const addEngineer = () => {
@@ -22,27 +22,27 @@ const addEngineer = () => {
                 message: 'Record their identification number.',
                 name: 'id',
             },
-            // {
-            //     type: 'input',
-            //     message: 'Write their office number.',
-            //     name: 'office',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their email.',
-            //     name: 'email',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their identification number.',
-            //     name: 'github',
-            // },
+            {
+                type: 'input',
+                message: 'Write their office number.',
+                name: 'office',
+            },
+            {
+                type: 'input',
+                message: 'Write their email.',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'Write github profile.',
+                name: 'github',
+            },
         ])
         .then((data) => {
-            const engineerData = new newmember.Newengineer(data.name, "Engineer", data.id, data.office, data.email, data.github)
+            const engineerData = new newmember.Newmember(data.name, "Engineer", data.id, data.office, data.email, data.github)
             teamInfo.push(engineerData)
             //push information into the teamInfo array
-            addNewOrExit()
+            mainMenu()
         })
 }
 
@@ -59,31 +59,31 @@ const addIntern = () => {
                 message: 'Record their identification number.',
                 name: 'id',
             },
-            // {
-            //     type: 'input',
-            //     message: 'Write their office number.',
-            //     name: 'office',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their email.',
-            //     name: 'email',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their identification number.',
-            //     name: 'github',
-            // },
+            {
+                type: 'input',
+                message: 'Write their office number.',
+                name: 'office',
+            },
+            {
+                type: 'input',
+                message: 'Write their email.',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'Write their identification number.',
+                name: 'github',
+            },
         ])
         .then((data) => {
-            const internData = new newmember.Newintern(data.name, "Intern", data.id, data.office, data.email, data.github)
+            const internData = new newmember.Newmember(data.name, "Intern", data.id, data.office, data.email, data.github)
             teamInfo.push(internData)
             //push information into the teamInfo array
-            addNewOrExit()
+            mainMenu()
         })
     }
 
-const addNewOrExit = () => {
+const mainMenu = () => {
     inquirer
         .prompt([
             {
@@ -124,28 +124,28 @@ const init = () => {
                 message: 'Record their identification number.',
                 name: 'id',
             },
-            // {
-            //     type: 'input',
-            //     message: 'Write their office number.',
-            //     name: 'office',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their email.',
-            //     name: 'email',
-            // },
-            // {
-            //     type: 'input',
-            //     message: 'Write their identification number.',
-            //     name: 'github',
-            // },
+            {
+                type: 'input',
+                message: 'Write their office number.',
+                name: 'office',
+            },
+            {
+                type: 'input',
+                message: 'Write their email.',
+                name: 'email',
+            },
+            {
+                type: 'input',
+                message: 'Write their identification number.',
+                name: 'github',
+            },
 
         ])
 
         .then((data) => {
-            const managerData = new newmember.Newmanager(data.name, "Manager", data.id, data.office, data.email, data.github)
+            const managerData = new newmember.Newmember(data.name, "Manager", data.id, data.office, data.email, data.github)
             teamInfo.push(managerData)
-            addNewOrExit()
+            mainMenu()
             //push information into the teamInfo array
         })
 }

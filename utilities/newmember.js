@@ -1,41 +1,46 @@
-function Newmanager (name, position, id, office, email, github){
-    this.name = name;
-    this.position = position;
-    this.id = id;
-    this.office = office;
-    this.email = email;
-    this.github = github;
-    this.member = () => {
-        console.log([this.name])
+function Newmember (name, position, id, office, email, github){
+        this.name = name;
+        this.position = position;
+        this.id = id;
+        this.office = office;
+        this.email = email;
+        this.github = github;
+     
     }
-}
 
-function Newintern (name, position, id, office, email, github){
-    this.name = name;
-    this.position = position;
-    this.id = id;
-    this.office = office;
-    this.email = email;
-    this.github = github;
-    this.member = () => {
-        console.log([this.name])
-    }
-}
+// function Newmanager (name, position, id, office, email, github){
+//     this.name = name;
+//     this.position = position;
+//     this.id = id;
+//     this.office = office;
+//     this.email = email;
+//     this.github = github;
+ 
+// }
 
-function Newengineer (name, position, id, office, email, github){
-    this.name = name;
-    this.position = position;
-    this.id = id;
-    this.office = office;
-    this.email = email;
-    this.github = github;
-    this.member = () => {
-        console.log([this.name])
-    }
-}
+// function Newintern (name, position, id, office, email, github){
+//     this.name = name;
+//     this.position = position;
+//     this.id = id;
+//     this.office = office;
+//     this.email = email;
+//     this.github = github;
+   
+// }
+
+// function Newengineer (name, position, id, office, email, github){
+//     this.name = name;
+//     this.position = position;
+//     this.id = id;
+//     this.office = office;
+//     this.email = email;
+//     this.github = github;
+   
+// }
 
 module.exports = {
-    Newmanager,
-    Newintern,
-    Newengineer,
+    Newmember,
+    // Newmanager,
+    // Newintern,
+    // Newengineer,
 }

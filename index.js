@@ -1,5 +1,5 @@
 const fs = require('fs')
-const generateHTML = require('./utilities/renderHTML')
+const generateHTML = require('./src/renderHTML')
 const inquirer = require('inquirer')
 const teamInfo = []
 const Manager = require('./lib/Manager')

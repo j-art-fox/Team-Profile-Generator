@@ -1,6 +1,6 @@
 const fs = require('fs');
 const generateHTML = require('./utilities/renderHTML');
-const newmember = require('./utilities/newmember.js')
+const newmember = require('./lib/Employee.js')
 const inquirer = require('inquirer');
 const teamInfo = [];
 

@@ -25,7 +25,7 @@ function renderCard(member) {
             <li>${setIcon(member)} ${member.position}</li>
             <li><i class="fa-solid fa-cube"></i>:${member.office}</li>
             <li><i class="fa-solid fa-envelope"></i>:<a href="mailto:${member.email}">${member.email}</a></li>
-            <li><i class="fa-brands fa-github"></i>:${member.github}</li>
+            <li><i class="fa-brands fa-github"></i>:<a href="https://github.com/${member.github}/">${member.github}</a></li>
         </ul>
     </div>
 </div>`

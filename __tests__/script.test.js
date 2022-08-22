@@ -1,4 +1,4 @@
-const Script = require("../../script")
+const Script = require("..")
 
 //1 create  test for function that creates an individual team member object that contains their name, position, id number, email, and github
 describe ("script", () => {

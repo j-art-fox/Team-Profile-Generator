@@ -34,7 +34,7 @@ const addEngineer = () => {
             },
             {
                 type: 'input',
-                message: 'Write github profile.',
+                message: 'Write their GitHub handle.',
                 name: 'github',
             },
         ])
@@ -71,7 +71,7 @@ const addIntern = () => {
             },
             {
                 type: 'input',
-                message: 'Write their identification number.',
+                message: 'Write their GitHub handle.',
                 name: 'github',
             },
         ])
@@ -136,7 +136,7 @@ const init = () => {
             },
             {
                 type: 'input',
-                message: 'Write their identification number.',
+                message: 'Write their GitHub handle.',
                 name: 'github',
             },
 

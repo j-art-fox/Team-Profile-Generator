@@ -44,7 +44,7 @@ const makeTeam = (team) => {
             </div>
             <ul style="list-style: none" class="bg-white">
                 <li><i class="fa-solid fa-list-check"></i> Manager</li>
-                <li><i class="fa-solid fa-cube"></i>:${manager.office}</li>
+                <li><i class="fa-solid fa-cube"></i> Office:${manager.office}</li>
                 <li><i class="fa-solid fa-envelope"></i>:<a href="mailto:${manager.email}">${manager.email}</a></li>
             </ul>
         </div>
